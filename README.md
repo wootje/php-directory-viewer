@@ -22,7 +22,6 @@ Put the index.php file in the root of your web-server.
 4. add the base64 stringto the "index.php" file in the root directory
 <br>
 <br>
-<br>
 <b>Screenshot</b>
 <br>
 <br>
