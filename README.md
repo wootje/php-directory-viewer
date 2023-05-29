@@ -9,17 +9,27 @@ Displays all directories &amp; files on you web-server. You cannot edit or manag
 
 <br>
 <b>How to use</b>
-
+<br>
+<br>
 Put the index.php file in the root of your web-server.
 <br>
 <br>
 <br>
 <b>How to add icons</b>
+<br>
+<br>
+1. copy the "icons" directory to your web-server<br>
+2. copy the images containing the icons to the "icon" directory<br>
+3. visit the "icon" web-site<br>
+4. add the base64 stringto the "index.php" file in the root directory<br>
+<br>
+<br>
 
-1. copy the "icons" directory to your web-server
-2. copy the images containing the icons to the "icon" directory
-3. visit the "icon" web-site
-4. add the base64 stringto the "index.php" file in the root directory
+<b>Example</b>
+<br>
+<br>
+https://iptv.yourteq.network
+<br>
 <br>
 <br>
 <b>Screenshot</b>
