@@ -22,7 +22,7 @@ Put the index.php file in the root of your web-server.
 1. copy the "icons" directory to your web-server<br>
 2. copy the images containing the icons to the "icon" directory<br>
 3. visit the "icon" web-site<br>
-4. add the base64 stringto the "index.php" file in the root directory<br>
+4. add the base64 string to the "index.php" file in the root directory<br>
 <br>
 <br>
 
