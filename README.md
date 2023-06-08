@@ -6,7 +6,7 @@ Displays all directories &amp; files on you web-server. You cannot edit or manag
 3. visitor counter
 4. IP logger
 5. back -to-top button
-6. Rewritten for PHP 8.1
+6. rewritten for PHP 8.1
 
 <br>
 <b>How to use</b>
