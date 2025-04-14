@@ -38,4 +38,6 @@ https://iptv.yourteq.network
 <br>
 <img src="https://raw.githubusercontent.com/wootje/php-directory-viewer/main/screenshots/php-file-viewer.png"></img>
 
+<img alt="GitHub all releases" src="https://img.shields.io/github/downloads/wootje/php-directory-viewer/total">
+
 
