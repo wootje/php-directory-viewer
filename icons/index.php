@@ -12,6 +12,10 @@ Copy code
 	.bold {
 		font-weight: 700;
 	}
+	.codedstring:hover {
+	    cursor: grab!important;
+	    text-decoration: underline;
+	    color: #1786bd;
 </style>
 </head>
 <body>
@@ -26,6 +30,9 @@ Copy code
 
 <div></div>
 <div class="bold">Second line is the encoded base64 string.</div>
+<br><br><br>
+<div></div>
+<div class="bold">!!! Copy coded text by clicking it !!!</div>
 
 <br><br><br>
 
@@ -34,6 +41,7 @@ Copy code
 	$extension = array('jpg', 'png', 'gif');
 	$ignorearray = array('index.php');
 	$files = glob($directory . '/*.*');
+	$counter = 1;
 
 	foreach ($files as $file) {
 		$fileExtension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
@@ -54,9 +62,10 @@ Copy code
 			<div style="font-weight: 700;"><?php echo basename($file); ?></div>
 			<br><br>
 			<div></div>
-			<div><?php echo $base64; ?></div>
+			<div class="codedstring" onclick="document.execCommand('copy');" ><?php echo $base64; ?></div>
 			<br><br><br>
 			<?php
+			$counter++;
 		}
 	}
 ?>

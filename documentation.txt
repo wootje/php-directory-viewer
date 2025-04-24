@@ -1,0 +1,63 @@
+
+
+
+This is a webpage that all files on a webserver shows. 
+
+
+Web adresses:
+
+1. <(sub)domain>/index.php
+
+2. <(sub)domain>/stats.php
+
+3. <(sub)domain>/icons/index.php
+
+
+Functions:
+
+1. File viewer with nice logo's for different types of files
+   (writtten in HTML, PHP, JavaScript & CSS)
+
+2. Clean, responsive webinterface
+
+3. No cookies
+
+4. Logs IP address with date, country, continent, Region, City, ISP & Valuta.
+   (writtten in HTML, PHP, JavaScript & CSS)
+
+5. You fan filter any column
+
+6. PHP 8.2 compatible.
+
+7. icons directory
+
+
+
+To install please follow the instructions below:
+
+1. Copy the files to the webserver root directory or extract the ZIP file in the root directory of a (sub) domain.
+
+   Files:
+   - index.php
+   - data.php
+   - stats.php to view statistics
+     to visit put "/stats.php" behind the (sub)domain of the root directory
+   - logo.png
+   - icons 
+     directory | you can generate encrypted codes for the icons shown in the file viewer
+     put the image files in the "icons" directory
+     icons sesttings are at the beginning of the index.php file
+     to visit put "/icons" behind the (sub)domain of the root directory
+     make sure the images are not too big, becasue else the image will generate a shitload of code
+     this is because the images are turned into encrypted text which is added to the "index.php" file
+     
+2. Add folders and files to the webserver.
+
+3. The script will index all files & folders so you can:
+   - browse them
+   - sort them
+   - see what kind of file it is
+   - feel free to add more icons (top of index.php file) & file extensions (just below the icons » this is one line of code with an array)
+
+4. Ready!
+
