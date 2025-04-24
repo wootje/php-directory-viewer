@@ -7,6 +7,7 @@ Displays all directories &amp; files on you web-server. You cannot edit or manag
 4. IP logger
 5. back -to-top button
 6. rewritten for PHP 8.1
+7. Visitor stats webpage
 
 <br>
 <b>How to use</b>
@@ -37,6 +38,12 @@ https://iptv.yourteq.network
 <br>
 <br>
 <img src="https://raw.githubusercontent.com/wootje/php-directory-viewer/main/screenshots/php-file-viewer.png"></img>
+<br>
+<br>
+<img src="https://raw.githubusercontent.com/wootje/php-directory-viewer/de29c89baed1beaf4c9bae4412a642d8d7c391e2/screenshots/2025-04-24%20IP%20Stats%20Analyzer%20stats.php%202025-04-24.png"></img><br>
+<br>
+<br>
+<img src="https://raw.githubusercontent.com/wootje/php-directory-viewer/de29c89baed1beaf4c9bae4412a642d8d7c391e2/screenshots/2025-04-24%20Icons%202025-04-24.png"></img>
 
 <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/wootje/php-directory-viewer/total">
 
