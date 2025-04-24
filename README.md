@@ -32,7 +32,7 @@ Put the index.php file in the root of your web-server.
 <b>Screenshot</b>
 <br>
 <br>
-<img src="https://raw.githubusercontent.com/wootje/php-directory-viewer/main/screenshots/php-file-viewer.png"></img>
+<img src="https://raw.githubusercontent.com/wootje/php-directory-viewer/main/screenshots/2025-04-24_file_page.png"></img>
 <br>
 <br>
 <img src="https://raw.githubusercontent.com/wootje/php-directory-viewer/de29c89baed1beaf4c9bae4412a642d8d7c391e2/screenshots/2025-04-24%20IP%20Stats%20Analyzer%20stats.php%202025-04-24.png"></img><br>
