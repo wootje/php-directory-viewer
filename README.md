@@ -26,11 +26,6 @@ Put the index.php file in the root of your web-server.
 4. add the base64 string to the "index.php" file in the root directory<br>
 <br>
 <br>
-
-<b>Example</b>
-<br>
-<br>
-https://iptv.yourteq.network
 <br>
 <br>
 <br>
