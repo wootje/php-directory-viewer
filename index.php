@@ -12,6 +12,9 @@ print base64_decode(isset($I[$e]) ? $I[$e] : $I['file']);
 exit;
 }
 
+// Set website name here
+$websitename = 'IP Stats Analyzer';
+
 // Log IP & count visitors
 $host = $_SERVER["HTTP_HOST"];
 $userip = $_SERVER["REMOTE_ADDR"];
@@ -66,11 +69,11 @@ fclose($fp);
 
 // Start configs
 $self = basename(isset($_SERVER['SCRIPT_FILENAME']) ? $_SERVER['SCRIPT_FILENAME'] : __FILE__);
-$sitename = '<a href=https://' . $host . ' >' . $host . '<a>';
+$sitename = '<a href=https://' . $host . ' >' . print $websitename; ?> . '<a>';
 //$date='M-d-y'; // date format
 $date = 'j-n-Y h:i';
 //date("Y-m-d H:i:s");
-$ignore = array('.','..','.htaccess','index.php','icon.php','Thumbs.db','graph.js','cgi-bin',$self,'count_file.txt','ip.txt','logo.png','stats.php','Chart.js','data.php'); // ignore these files
+$ignore = array('.','..','.htaccess','index.php','documentation.txt','icon.php','Thumbs.db','graph.js','cgi-bin',$self,'count_file.txt','ip.txt','logo.png','stats.php','Chart.js','data.php'); // ignore these files
 // End configs
 $root = dirname(__FILE__);
 $dir = isset($_GET['dir']) ? $_GET['dir'] : '';
@@ -274,7 +277,7 @@ $up_url = ($up_dir != '' && $up_dir != '.') ? $self . '?dir=' . rawurlencode($up
 <div id="topheader">
     <h2>
         <a class="ptitle" style="text-transform:uppercase;font-family:system-ui;font-weight:700;" href="/">
-            <?php print $host; ?>
+            <?php print $websitename; ?>
         </a>
     </h2>
 </div>
