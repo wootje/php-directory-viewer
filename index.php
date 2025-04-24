@@ -46,7 +46,7 @@ $fp = fopen('ip.txt', 'a') or die("Unable to open file!");
 
 // Extra gegevens ophalen en toevoegen
 $log_data = sprintf(
-    "IP: %s | Datum: %s | Continent: %s | Continentcode: %s | Land: %s | Landcode: %s | Regio: %s | Regio Naam: %s | Stad: %s | Valuta: %s | ISP: %s\n",
+    "IP: %s | Date: %s | Continent: %s | Continent code: %s | Country: %s | Country code: %s | Region: %s | Regio Name: %s | City: %s | Valuta: %s | ISP: %s\n",
     $userip,
     date("d/m/Y H:i:s"),
     "Europe",         // Continent (statisch of API-output)
