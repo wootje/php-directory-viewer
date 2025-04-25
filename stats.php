@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
+    <?php $sitetitle = 'IP Stats Analyzer'; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IP Adres Analyse</title>
+    <title><?php echo $sitetitle; ?></title>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -118,7 +119,7 @@
 
 <body>
     <header>
-        <h1>IP Adres Analyse</h1>
+        <h1><?php echo $sitetitle; ?></h1>
     </header>
     <main>
         <!-- Tabel -->
@@ -226,62 +227,55 @@
                 populateDropdown('ispFilter', [...new Set(data.map(d => d.isp))]);
                 populateDropdown('currencyFilter', [...new Set(data.map(d => d.currency))]);
 
-                // Tabel vullen
-                const dataTable = document.getElementById('dataTable');
-                data.forEach(entry => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${entry.ip}</td>
-                        <td>${entry.date}</td>
-                        <td>${entry.continent}</td>
-                        <td>${entry.country}</td>
-                        <td>${entry.region}</td>
-                        <td>${entry.city}</td>
-                        <td>${entry.isp}</td>
-                        <td>${entry.currency}</td>
-                    `;
-                    dataTable.appendChild(row);
-                });
+                // Functie om tabel te filteren
+                const renderTable = (filterValues = {}) => {
+                    const dataTable = document.getElementById('dataTable');
+                    dataTable.innerHTML = ''; // Leegmaken
 
-                // Grafieken genereren
-                const generateChart = (id, label, data) => {
-                    new Chart(document.getElementById(id), {
-                        type: 'bar',
-                        data: {
-                            labels: Object.keys(data),
-                            datasets: [{
-                                label,
-                                data: Object.values(data),
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            scales: {
-                                y: { beginAtZero: true }
-                            }
-                        }
+                    data.filter(entry => {
+                        return Object.keys(filterValues).every(key => {
+                            const value = filterValues[key];
+                            return !value || entry[key] === value;
+                        });
+                    }).forEach(entry => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${entry.ip}</td>
+                            <td>${entry.date}</td>
+                            <td>${entry.continent}</td>
+                            <td>${entry.country}</td>
+                            <td>${entry.region}</td>
+                            <td>${entry.city}</td>
+                            <td>${entry.isp}</td>
+                            <td>${entry.currency}</td>
+                        `;
+                        dataTable.appendChild(row);
                     });
                 };
 
-                generateChart('countryChart', '# van landen', data.reduce((acc, curr) => {
-                    acc[curr.country] = (acc[curr.country] || 0) + 1;
-                    return acc;
-                }, {}));
-                generateChart('regionChart', '# van regio\'s', data.reduce((acc, curr) => {
-                    acc[curr.region] = (acc[curr.region] || 0) + 1;
-                    return acc;
-                }, {}));
-                generateChart('cityChart', '# van steden', data.reduce((acc, curr) => {
-                    acc[curr.city] = (acc[curr.city] || 0) + 1;
-                    return acc;
-                }, {}));
-                generateChart('ispChart', '# van ISP\'s', data.reduce((acc, curr) => {
-                    acc[curr.isp] = (acc[curr.isp] || 0) + 1;
-                    return acc;
-                }, {}));
+                // Dropdown events koppelen aan filtering
+                ['ipFilter', 'dateFilter', 'continentFilter', 'countryFilter', 'regionFilter', 'cityFilter', 'ispFilter', 'currencyFilter'].forEach(id => {
+                    const dropdown = document.getElementById(id);
+                    dropdown.addEventListener('change', () => {
+                        const filters = {
+                            ip: document.getElementById('ipFilter').value,
+                            date: document.getElementById('dateFilter').value,
+                            continent: document.getElementById('continentFilter').value,
+                            country: document.getElementById('countryFilter').value,
+                            region: document.getElementById('regionFilter').value,
+                            city: document.getElementById('cityFilter').value,
+                            isp: document.getElementById('ispFilter').value,
+                            currency: document.getElementById('currencyFilter').value
+                        };
+                        renderTable(filters);
+                    });
+                });
+
+                // Initiale tabel vullen
+                renderTable();
             })
             .catch(error => console.error('Error:', error));
     </script>
+</body>
+
+</html>
