@@ -56,20 +56,43 @@ c';
 
 
 // Log IP & count visitors
-$host = $_SERVER["HTTP_HOST"];
-$userip = $_SERVER["REMOTE_ADDR"];
-$user_agent = $_SERVER["HTTP_USER_AGENT"];
+$host         = $_SERVER["HTTP_HOST"];
+$userip       = $_SERVER["REMOTE_ADDR"];
+$user_agent   = $_SERVER["HTTP_USER_AGENT"];
+$websitename  = $host;
 
-// Set website name here
-$websitename = "$host";
+// --- Geo-IP gegevens ophalen via ip-api.com ---
+$continent = 'Onbekend';
+$city      = 'Onbekend';
+$country   = 'Onbekend';
+$isp       = 'Onbekend';
+$owner     = 'Onbekend';
+$data = [];
 
+if(function_exists('curl_version')) {
+    $ch = curl_init("http://ip-api.com/json/{$userip}?fields=status,continent,city,country,isp,as");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+    $resp = curl_exec($ch);
+    curl_close($ch);
+    if($resp !== false) {
+        $data = json_decode($resp, true);
+    }
+} elseif(ini_get('allow_url_fopen')) {
+    $resp = @file_get_contents("http://ip-api.com/json/{$userip}?fields=status,continent,city,country,isp,as");
+    if($resp !== false) {
+        $data = json_decode($resp, true);
+    }
+}
+if(!empty($data['status']) && $data['status'] === 'success') {
+    $continent = $data['continent'] ?: $continent;
+    $city      = $data['city']      ?: $city;
+    $country   = $data['country']   ?: $country;
+    $isp       = $data['isp']       ?: $isp;
+    $owner     = $data['as']        ?: $owner;
+}
 
-// Extra gegevens ophalen
-$continent = "Europe";
-$city = "Amsterdam";
-$country = "Netherlands";
-$isp = "Internet Utilities NA LLC";
-$owner = "Eigenaar onbekend";
+// Datum en tijd
 $date = date("d/m/Y");
 $time = date("H:i:s");
 
@@ -80,6 +103,7 @@ if (file_exists('count_file.txt')) {
     fclose($fil);
     $fil = fopen('count_file.txt', "w");
     fwrite($fil, $dat + 1);
+    fclose($fil);
 } else {
     $fil = fopen('count_file.txt', "w");
     fwrite($fil, 1);
@@ -89,15 +113,8 @@ if (file_exists('count_file.txt')) {
 // Schrijven naar ip.txt
 $fp = fopen('ip.txt', 'a') or die("Unable to open file!");
 $log_data = sprintf(
-    "IP: %s | Continent: %s | Stad: %s | Land: %s | ISP: %s | Eigenaar: %s | Datum: %s | Tijd: %s\n",
-    $userip,
-    $continent,
-    $city,
-    $country,
-    $isp,
-    $owner,
-    $date,
-    $time
+    "IP: %s | Continent: %s | Stad: %s | Land: %s | ISP: %s | Eigenaar: %s | Datum: %s | Tijd: %s \n",
+    $userip, $continent, $city, $country, $isp, $owner, $date, $time
 );
 fwrite($fp, $log_data);
 fclose($fp);
@@ -479,7 +496,6 @@ window.onload=function()
 </script>
 </head>
 <body>
-    <?php file_put_contents('ip.txt', $userip . PHP_EOL, FILE_APPEND); ?>
     <div id="idx"><!-- do not remove --></div>
     <div style="display:inline-block;text-align:center;width:100%;color:#dbdbdb;margin-top:0.5em;">
         <?php echo "Visits: ", $dat+1, " , "; ?>
