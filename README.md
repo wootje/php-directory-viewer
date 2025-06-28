@@ -26,7 +26,7 @@ Put the index.php file in the root of your web-server.
 4. add the base64 string to the "index.php" file in the root directory<br>
 <br>
 <br>
-<b>Buy me a cup of koffee!</b> 🙂👍 <br>
+<b>Buy me a cup of coffee!</b> 🙂👍 <br>
 https://urlshrt.eu/buycupofcoffee
 <br>
 <br>
