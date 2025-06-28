@@ -30,6 +30,9 @@ Put the index.php file in the root of your web-server.
 https://urlshrt.eu/buycupofcoffee
 <br>
 <br>
+<img src="https://urlshrt.eu/donateqr"></img>
+<br>
+<br>
 <br>
 <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/wootje/webmin/total">
 <br>
